@@ -2,6 +2,9 @@ import React from "react";
 
 function SearchField(props) {
   //Is this just 3 buttons and a text input?
+  // search= search?q=
+  // trending = trending?
+  // random = random?
   return (
     <div>
       <form id="gifLookup">
@@ -15,21 +18,18 @@ function SearchField(props) {
           id="searchTerm"
           name="searchTerm"
           placeholder="Try cats"
-          onChange={(event) => (props.searchTerm = event.target.value)}
+          onChange={props.handleChange}
         ></input>
-        <button
-          type="button"
-          onClick={() => console.log("Regular was clicked")}
-        >
+        <button type="button" onClick={() => props.getSearchResults("search")}>
           Regular Search
         </button>
         <button
           type="button"
-          onClick={() => console.log("Trending was clicked")}
+          onClick={() => props.getSearchResults("trending")}
         >
           Trending Search
         </button>
-        <button type="button" onClick={() => console.log("Random was clicked")}>
+        <button type="button" onClick={() => props.getSearchResults("random")}>
           Random Search
         </button>
       </form>
