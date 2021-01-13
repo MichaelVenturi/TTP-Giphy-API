@@ -1,17 +1,40 @@
 import React from "react";
 
-function SearchField(props){
+function SearchField(props) {
   //Is this just 3 buttons and a text input?
-  return <div>
+  // search= search?q=
+  // trending = trending?
+  // random = random?
+  return (
+    <div>
       <form id="gifLookup">
-        <label><b><i>Search Term:</i></b></label>
-        <input type="text" id="searchTerm" name="searchTerm" placeholder="Try cats" onChange={(event)=>props.searchTerm = event.target.value}>
-        </input>
-        <button type="button" onClick={()=>console.log("Regular was clicked")}>Regular Search</button>
-        <button type="button" onClick={()=>console.log("Trending was clicked")}>Trending Search</button>
-        <button type="button" onClick={()=>console.log("Random was clicked")}>Random Search</button>
+        <label>
+          <b>
+            <i>Search Term:</i>
+          </b>
+        </label>
+        <input
+          type="text"
+          id="searchTerm"
+          name="searchTerm"
+          placeholder="Try cats"
+          onChange={props.handleChange}
+        ></input>
+        <button type="button" onClick={() => props.getSearchResults("search")}>
+          Regular Search
+        </button>
+        <button
+          type="button"
+          onClick={() => props.getSearchResults("trending")}
+        >
+          Trending Search
+        </button>
+        <button type="button" onClick={() => props.getSearchResults("random")}>
+          Random Search
+        </button>
       </form>
     </div>
+  );
 }
 
 export default SearchField;
