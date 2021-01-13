@@ -1,5 +1,5 @@
 import React from "react";
-//import reactDOM from "react-dom";
+import reactDOM from "react-dom";
 import "./App.css";
 import GifCard from "./components/GifCard";
 import SearchField from "./components/SearchField";
@@ -18,6 +18,8 @@ class App extends React.Component {
     // this.getTrendingResults = this.getTrendingResults.bind(this);
     // this.getRandomResult = this.getRandomResult.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.displayResults = this.displayResults.bind(this);
+    this.displayLoading = this.displayLoading.bind(this);
   }
 
   // Merge these into one function eventually
@@ -51,6 +53,30 @@ class App extends React.Component {
     }
   };
 
+  displayResults = async (type) => {
+    const data = await this.getSearchResults(type);
+    this.displayLoading();
+    console.log(typeof data.data);
+    if (!data) {
+      alert("error");
+      return;
+    }
+    const resultDiv = document.querySelector("#results");
+
+    let results = [];
+
+    if (type !== "random") {
+      for (const dataSet of data.data) {
+        results.push(<GifCard url={dataSet.images.original.url}></GifCard>);
+      }
+    } else {
+      // can't iterate when doing random
+      results.push(<GifCard url={data.data.images.original.url}></GifCard>);
+    }
+
+    reactDOM.render(results, resultDiv);
+  };
+
   handleChange = (event) => {
     let value = event.target.value;
     let name = event.target.name;
@@ -61,20 +87,20 @@ class App extends React.Component {
     });
   };
 
+  displayLoading = () => {
+    const resultDiv = document.querySelector("#results");
+    reactDOM.render("loading", resultDiv);
+  };
+
   render() {
     return (
       <div className="App">
-        <h1>hello world</h1>
+        <h1>GIPHY Search</h1>
         <SearchField
           handleChange={this.handleChange}
-          getSearchResults={this.getSearchResults}
+          getSearchResults={this.displayResults}
         ></SearchField>
-
-        <input
-          type="text"
-          name="searchTerm"
-          onChange={this.handleChange}
-        ></input>
+        <div id="results"></div>
       </div>
     );
   }

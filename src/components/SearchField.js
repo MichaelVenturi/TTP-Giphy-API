@@ -10,7 +10,7 @@ function SearchField(props) {
       <form id="gifLookup">
         <label>
           <b>
-            <i>Search Term:</i>
+            <i>Search Term: </i>
           </b>
         </label>
         <input
