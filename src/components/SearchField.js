@@ -1,4 +1,9 @@
 import React from "react";
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function SearchField(props) {
   //Is this just 3 buttons and a text input?
@@ -7,12 +12,15 @@ function SearchField(props) {
   // random = random?
   return (
     <div>
-      <form id="gifLookup">
-        <label>
+      <Container>
+        <Col>
+      <Form id="gifLookup">
+      <Row className ="justify-content-md-center">
+        <Form.Label>
           <b>
             <i>Search Term: </i>
           </b>
-        </label>
+        </Form.Label>
         <input
           type="text"
           id="searchTerm"
@@ -20,19 +28,24 @@ function SearchField(props) {
           placeholder="Try cats"
           onChange={props.handleChange}
         ></input>
-        <button type="button" onClick={() => props.getSearchResults("search")}>
-          Regular Search
-        </button>
-        <button
-          type="button"
+        </Row>
+        <Row className ="justify-content-md-center">
+        <Button variant="secondary" onClick={() => props.getSearchResults("search")}>
+          Search Gifs
+        </Button>
+        <Button
+          variant="secondary"
           onClick={() => props.getSearchResults("trending")}
         >
-          Trending Search
-        </button>
-        <button type="button" onClick={() => props.getSearchResults("random")}>
-          Random Search
-        </button>
-      </form>
+          Trending Gifs
+        </Button>
+        <Button variant="secondary" onClick={() => props.getSearchResults("random")}>
+          Random Gif
+        </Button>
+        </Row>
+      </Form>
+        </Col>
+      </Container>
     </div>
   );
 }

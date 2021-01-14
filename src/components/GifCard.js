@@ -1,9 +1,10 @@
 import React from "react";
+import Image from 'react-bootstrap/Image';
 
 function GifCard(props) {
   return (
     <div>
-      <img src={props.url} alt="gif" />
+      <Image src={props.url} alt="gif" rounded/>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import reactDOM from "react-dom";
 import "./App.css";
 import GifCard from "./components/GifCard";
 import SearchField from "./components/SearchField";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //API Key:  fOZyz1kQZ2FT4Nsguh8pbPSdnmVmWuvm
 class App extends React.Component {
@@ -95,7 +96,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>GIPHY Search</h1>
+        <h1 id="title">GIPHY Search</h1>
         <SearchField
           handleChange={this.handleChange}
           getSearchResults={this.displayResults}
