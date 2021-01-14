@@ -68,7 +68,7 @@ class App extends React.Component {
 
     if (type !== "random") {
       for (const dataSet of data.data) {
-        results.push(<GifCard url={dataSet.images.original.url}></GifCard>);
+        results.push(<GifCard url={dataSet.images.fixed_height.url}></GifCard>);
       }
     } else {
       // can't iterate when doing random
