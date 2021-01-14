@@ -3,7 +3,7 @@ import reactDOM from "react-dom";
 import "./App.css";
 import GifCard from "./components/GifCard";
 import SearchField from "./components/SearchField";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //API Key:  fOZyz1kQZ2FT4Nsguh8pbPSdnmVmWuvm
 class App extends React.Component {

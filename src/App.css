@@ -1,7 +1,14 @@
-#title{
-    color: black;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+#title {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+#results {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
